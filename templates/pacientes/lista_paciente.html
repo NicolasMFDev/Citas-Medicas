@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block titulo %} Lista de Pacientes {% endblock %}
+
+{% block estilo %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/pacientes_css/estilo_lista_paciente.css') }}">
+{% endblock %}
+
+{% block content %}
+    <div id="lista_p">
+        <ul id="menu_h">
+            <li><a href="/agregar_paciente">Agregar</a></li>
+            <li><a href="/consultar_paciente">Consultar</a></li>
+            <li><a href="/lista_paciente">Lista de Pacientes</a></li>
+        </ul>
+          
+        <div class="grid-container-p">
+            {% for dato in datos %}
+            <div class="grid-item-p">
+                <p>ID: {{ dato.identificacion }}</p>
+                <p>Nombre: {{ dato.nombre }}</p>
+                <p>Celular: {{ dato.celular }}</p>
+                <p>Correo: {{ dato.correo }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    
+    
+{% endblock %}
+
+{% block script %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='javascript/script_funciones.js') }}"></script>
+{% endblock %}

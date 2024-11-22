@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block titulo %} Agregar Paciente {% endblock %}
+
+{% block estilo %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/pacientes_css/estilo_paciente.css') }}">
+{% endblock %}
+
+{% block content %}
+    <div id="paciente">
+        <ul id="menu_h">
+            <li><a href="/agregar_paciente">Agregar</a></li>
+            <li><a href="/consultar_paciente">Consultar</a></li>
+            <li><a href="/lista_paciente">Lista de Pacientes</a></li>
+        </ul>
+        
+        <form id="agregar_paciente" action="{{ url_for('main.agregar_paciente') }}" method="POST">
+            <div class="form-group">
+                <label for="id" id="titulo">Agregar Paciente</label> 
+            </div>
+            
+            <div class="form-group">
+                <label for="id">Identificacion:</label> 
+                <input type="text" name="id" id="id" required>
+            </div>
+            <div class="form-group">
+                <label for="nombre">Nombre Completo</label>
+                <input type="text" name="nombre" id="nombre" required>
+            </div>
+            <div class="form-group">
+                <label for="celular">Celular</label>
+                <input type="text" name="celular" id="celular" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Correo Electronico</label>
+                <input type="email" name="email" id="email" required>
+            </div>
+            
+            <button type="submit" class="btn btn-primary" id="btn_guardar">Agregar Paciente</button>
+        </form>     
+    </div>
+    
+    
+{% endblock %}
+
+{% block script %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='javascript/script_funciones.js') }}"></script>
+{% endblock %}
