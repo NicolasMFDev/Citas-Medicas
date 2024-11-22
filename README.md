@@ -1,6 +1,6 @@
 # Proyecto de Gestión de Citas Médicas con Flask
 
-Este es un proyecto web desarrollado con Flask para la gestión de citas médicas. Permite registrar pacientes, programar citas, Ver listado de pacientes, ver listados de citas y tambien se puede elminar o cancelar cita. Permite registrar medicos, eliminar, consultar listados de los meidocs, consultar cita que tiene los medicos.
+Este es un proyecto web desarrollado con Flask para la gestión de citas médicas. Permite registrar pacientes, programar citas, Ver listado de pacientes, ver listados de citas y tambien se puede elminar o cancelar cita. Permite registrar medicos, eliminar, consultar listados de los medicos y consultar la lista de los medicos.
 
 ## Características:
 
@@ -15,15 +15,15 @@ Este es un proyecto web desarrollado con Flask para la gestión de citas médica
 ## listado de pacientes y medicos                        
 - Lista citas en un archivo CSV                  
 - Lista Pacientes en un archivo CSV               
-- Lista medicos en un archivo json
+- Lista medicos en un archivo Json
 
 ## Tecnologías Utilizadas:
 
 - *Python* : Lenguaje utilizado
 - *Flask* : Framework web utilizado.   
 - *HTML y CSS*: Para la implementacion y el diseño de la interfaz de usuario.   
-- *Jscript*: Para a la hora de cambiar o modificar diseño no toque reiniciar todo el programa, solo se actualiza desde la web.
-- *Jinja*: Para manejo datos de flask y html
+- *Jscript*: Para el manejo de los datos y que se vea en tiempo de ejecucion.
+- *Jinja*: Para manejo datos de Flask y HTML
 
 ## Requisitos Previos
 
@@ -31,8 +31,22 @@ Este es un proyecto web desarrollado con Flask para la gestión de citas médica
 - Visual Code para crear entornos virtuales (Python).           
 - Instalación de las dependencias necesarias.
 
-## Arreglos de requerimientos
-La aplicacion no tenia diseño web, esta implementada solo en consola, con un super menu. Aparte de esta problematica se procede a diseñar una web, con un menu simplificado y facil de usar.
+## Ejecucion
+Comando para ejecutar el proyecto
+```bash
+cd Citas Medicas
+python main.py
+```
+
+## Issues Corregidos
+
+- Se implementó una interfaz web con Flask en lugar de hacerlo en consola con Rich
+- Se arregló el super menu simplificandolo en 3 opciones:
+    - Inicio, Citas, Paciente, Medico
+- Se acomodó el apartado citas urgentes para que dentro citas se pudiera agregar directamente
+- Se acomodó la fecha para que al momento de agendar no hiciera conflicto con una ya registrada
+- tanto en el apartado paciente como medico se puede visualizar las lista de los pacientes y medicos registrados
+- Se manejó el apartado agregar_paciente y agregar_medico para que no registraran identificaciones ya existentes    
 
 ## Autores:
 
