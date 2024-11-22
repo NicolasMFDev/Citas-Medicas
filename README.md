@@ -52,4 +52,4 @@ python main.py
 
 - Creado por [Nicolas Martinez](https://github.com/NicolasMFDev)
 - Creado por [Carlos Ruiz](https://github.com/HernanWow)
-- Creado por [Julian ](https://github.com/B4ST1D4S2426)
+- Creado por [Julian Andres Bastidas](https://github.com/B4ST1D4S2426)
