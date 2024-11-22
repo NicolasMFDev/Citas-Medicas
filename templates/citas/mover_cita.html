@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Mover Cita{% endblock %}
+
+{% block estilo %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/citas_css/estilo_mover_cita.css') }}">
+{% endblock %}
+
+{% block content %}
+    <div id="mover">
+        <ul id="menu_h">
+            <li><a href="/agendar_cita">Agendar</a></li>
+            <li><a href="/cancelar_cita">Cancelar</a></li>
+            <li><a href="/mover_cita">Mover</a></li>
+        </ul>
+        <div class="form-group">
+            <label for="id" id="titulo">Paciente: {{ identificacion }} - {{ nombre }}</label> 
+        </div>
+        <form id="move" action="{{ url_for('main.mover_cita') }}" method="POST" onsubmit="validarMover(event)">
+            <div class="form-group">
+                <label for="citas">Citas del Paciente:</label> 
+                <select name="citas" id="citas" required>
+                    <option value="selecciona">Selecciona una Cita</option>
+
+                    {% for cita in citas %}
+                        <option value="{{ cita.medico.nombre }}">Dr. {{ cita.medico.nombre }} - {{ cita.fecha_hora.strftime('%Y-%m-%d %H:%M') }} - Urgente: {{ cita.urgente }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="fecha">Fecha Nueva</label>
+                <input type="date" name="fecha" id="fecha" required>
+            </div>
+            <div class="form-group">
+                <label for="hora">Hora Nueva</label>
+                <input type="time" name="hora" id="hora" required>
+            </div>
+            <div class="form-group">
+                <label for="urgente">Cita Urgente</label>
+                <select name="urgente" id="urgente" required>
+                    <option value="Seleccione">Seleccione</option>
+                    <option value="Si">Si</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary" id="btn_mover">Mover Cita</button>
+        </form>     
+    </div>
+    
+    
+{% endblock %}
+
+{% block script %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='javascript/script_funciones.js') }}"></script>
+{% endblock %}

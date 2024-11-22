@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Cancelar Cita{% endblock %}
+
+{% block estilo %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/citas_css/estilo_cancelar_cita.css') }}">
+{% endblock %}
+
+{% block content %}
+    <div id="cancelar">
+        <ul id="menu_h">
+            <li><a href="/agendar_cita">Agendar</a></li>
+            <li><a href="/cancelar_cita">Cancelar</a></li>
+            <li><a href="/mover_cita">Mover</a></li>
+        </ul>
+        <div class="form-group">
+            <label for="id" id="titulo">Paciente: {{ identificacion }} - {{ nombre }}</label> 
+        </div>
+        <form action="{{ url_for('main.cancelar_cita') }}" method="POST" onsubmit="return mostrarAlertaCancelar()">
+            <div class="form-group">
+                <label for="citas">Citas del Paciente:</label> 
+                <select name="citas" id="citas" required>
+                    <option value="selecciona">Selecciona una Cita</option>
+
+                    {% for cita in citas %}
+                        <option value="{{ cita }}">Dr. {{ cita.medico.nombre }} - {{ cita.fecha_hora.strftime('%Y-%m-%d %H:%M') }} - Urgente: {{ cita.urgente }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            
+            <button type="submit" class="btn btn-primary" id="btn_cancelar">Cancelar Cita</button>
+        </form>     
+    </div>
+    
+    
+{% endblock %}
+
+{% block script %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='javascript/script_funciones.js') }}"></script>
+{% endblock %}
