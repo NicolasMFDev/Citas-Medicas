@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block titulo %} Agregar Medico {% endblock %}
+
+{% block estilo %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/medicos_css/estilo_medico.css') }}">
+{% endblock %}
+
+{% block content %}
+    <div id="medico">
+        <ul id="menu_h">
+            <li><a href="/agregar_medico">Agregar</a></li>
+            <li><a href="/consultar_medico">Consultar</a></li>
+            <li><a href="/lista_medico">Lista de Medico</a></li>
+        </ul>
+        
+        <form id="agregar_medico" action="{{ url_for('main.agregar_medico') }}" method="POST">
+            <div class="form-group">
+                <label for="id" id="titulo">Agregar Medico</label> 
+            </div>
+            
+            <div class="form-group">
+                <label for="id">Identificacion:</label> 
+                <input type="text" name="id" id="id" required>
+            </div>
+            <div class="form-group">
+                <label for="nombre">Nombre Completo</label>
+                <input type="text" name="nombre" id="nombre" required>
+            </div>
+            <div class="form-group">
+                <label for="celular">Celular</label>
+                <input type="text" name="celular" id="celular" required>
+            </div>
+            <div class="form-group">
+                <label for="especialidad">Especialidad</label>
+                <input type="especialidad" name="especialidad" id="especialidad" required>
+            </div>
+            
+            <button type="submit" class="btn btn-primary" id="btn_guardar">Agregar Medico</button>
+        </form>     
+    </div>
+    
+    
+{% endblock %}
+
+{% block script %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='javascript/script_funciones.js') }}"></script>
+{% endblock %}

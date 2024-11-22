@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block titulo %} Consultar Medico {% endblock %}
+
+{% block estilo %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/medicos_css/estilo_consultar_medico.css') }}">
+{% endblock %}
+
+{% block content %}
+    <div id="consultar_m">
+        <ul id="menu_h">
+            <li><a href="/agregar_medico">Agregar</a></li>
+            <li><a href="/consultar_medico">Consultar</a></li>
+            <li><a href="/lista_medico">Lista de Medicos</a></li>
+        </ul>
+        
+        <form action="{{ url_for('main.agregar_medico') }}" method="POST" onsubmit="return mostrarAlertaActualizarBorrarMedico()">
+            <div class="form-group">
+                <label for="id" id="titulo">Actualizar/Borrar Medico</label> 
+            </div>
+            
+            <div class="form-group">
+                <label for="consulta">Consultar Medico</label>
+            </div>
+            <div class="form-group-1">
+                
+                <input type="text" name="consulta" id="consulta" required>
+                <button type="button" class="buscar" id="buscar" onclick="ActualizarMedico()">
+                    Buscar
+                </button>
+            </div>
+           
+            <div class="oculto" id="form-actual">
+                <!--<div class="form-group">
+                    <label for="id">Identificacion:</label> 
+                    <input type="text" name="id" id="id" required>
+                </div>-->
+                <div class="form-group">
+                    <label for="nombre">Nombre Completo</label>
+                    <input type="text" name="nombre" id="nombre" required>
+                </div>
+                <div class="form-group">
+                    <label for="celular">Celular</label>
+                    <input type="text" name="celular" id="celular" required>
+                </div>
+                <div class="form-group">
+                    <label for="especialidad">Especialidad</label>   
+                    <input type="text" name="especialidad" id="especialidad" required>
+                </div>
+                
+                <div id="botones">
+                    <button type="submit" class="btn btn-primary" id="btn_actualizar" name="action" value="actualizar">Actualizar Paciente</button>
+                    <button type="submit" class="btn btn-primary" id="btn_borrar" name="action" value="borrar">Borrar Paciente</button>
+                </div>    
+            </div>
+        </form>     
+    </div>
+    
+    
+{% endblock %}
+
+{% block script %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='javascript/script_funciones.js') }}"></script>
+{% endblock %}
